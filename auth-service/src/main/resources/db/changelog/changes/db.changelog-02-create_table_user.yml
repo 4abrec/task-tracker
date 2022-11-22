@@ -1,0 +1,38 @@
+databaseChangeLog:
+  - changeSet:
+      id: "1"
+      author: 4abrec
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  name: id
+                  type: serial
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: phone_number
+                  type: VARCHAR(25)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: password
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  constraints:
+                    unique: true
+                    nullable: false
+                  name: username
+                  type: VARCHAR(100)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: first_name
+                  type: VARCHAR(35)
+              - column:
+                  name: last_name
+                  type: VARCHAR(35)
+            tableName: users

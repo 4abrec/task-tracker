@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: "3"
+      author: 4abrec
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  name: user_id
+                  type: int
+                  constraints:
+                    primaryKey: true
+                    foreignKeyName: fk_user_role
+                    references: users(id)
+              - column:
+                  name: role_id
+                  type: int
+                  constraints:
+                    primaryKey: true
+                    foreignKeyName: fk_role_user
+                    references: role(id)
+            tableName: user_role

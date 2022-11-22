@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: "1"
+      author: 4abrec
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  name: id
+                  type: serial
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: VARCHAR(25)
+            tableName: role
