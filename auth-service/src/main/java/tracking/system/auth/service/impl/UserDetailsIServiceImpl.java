@@ -7,8 +7,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 import tracking.system.auth.domain.User;
 import tracking.system.auth.exception.TaskTrackerException;
-import tracking.system.auth.repo.UserRepository;
-import tracking.system.auth.service.impl.UserDetailsImpl;
+import tracking.system.auth.repository.UserRepository;
 
 import javax.transaction.Transactional;
 

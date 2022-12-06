@@ -7,14 +7,14 @@ databaseChangeLog:
             columns:
               - column:
                   name: user_id
-                  type: int
+                  type: VARCHAR(36)
                   constraints:
                     primaryKey: true
                     foreignKeyName: fk_user_role
                     references: users(id)
               - column:
                   name: role_id
-                  type: int
+                  type: VARCHAR(36)
                   constraints:
                     primaryKey: true
                     foreignKeyName: fk_role_user

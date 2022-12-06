@@ -9,8 +9,8 @@ import tracking.system.auth.domain.User;
 import tracking.system.auth.dto.MessageResponseDto;
 import tracking.system.auth.dto.UserRegistrationDto;
 import tracking.system.auth.exception.TaskTrackerException;
-import tracking.system.auth.repo.RoleRepository;
-import tracking.system.auth.repo.UserRepository;
+import tracking.system.auth.repository.RoleRepository;
+import tracking.system.auth.repository.UserRepository;
 import tracking.system.auth.service.UserService;
 
 import java.util.HashSet;
@@ -47,6 +47,6 @@ public class UserServiceImpl implements UserService {
             }
         user.setRoles(roles);
         userRepository.save(user);
-        return new MessageResponseDto("Пользователь " + user.getUsername() + " успешно зарегистрирован!");
+        return new MessageResponseDto("User " + user.getUsername() + " successfully registered!");
     }
 }

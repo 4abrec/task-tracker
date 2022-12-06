@@ -46,7 +46,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         super.configure(endpoints);
-        endpoints.authenticationManager(authManager).userDetailsService(userDetailsIService).tokenStore(tokenStore()).accessTokenConverter(accessTokenConverter());
+        endpoints.authenticationManager(authManager).userDetailsService(userDetailsIService)
+                .tokenStore(tokenStore()).accessTokenConverter(accessTokenConverter());
     }
 
     @Override
@@ -60,8 +61,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory().withClient(clientId)
                 .authorizedGrantTypes("password", "refresh_token", "client_credentials")
-                .scopes("read", "write").resourceIds("adnr")
-                .secret(passwordEncoder.encode(clientSecret)).accessTokenValiditySeconds(660);
+                .scopes("read", "write").resourceIds("4abr")
+                .secret(passwordEncoder.encode(clientSecret)).accessTokenValiditySeconds(3600);
     }
 
 }

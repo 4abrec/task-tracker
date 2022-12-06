@@ -7,7 +7,7 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
-                  type: serial
+                  type: VARCHAR(36)
                   constraints:
                     primaryKey: true
               - column:

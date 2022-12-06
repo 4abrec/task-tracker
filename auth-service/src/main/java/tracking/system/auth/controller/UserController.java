@@ -2,10 +2,8 @@ package tracking.system.auth.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.web.HttpMediaTypeNotAcceptableException;
 import org.springframework.web.bind.annotation.*;
 import tracking.system.auth.dto.MessageResponseDto;
 import tracking.system.auth.dto.UserRegistrationDto;
@@ -18,6 +16,12 @@ import java.security.Principal;
 public class UserController {
 
     private final UserService userService;
+
+    @GetMapping ("/user")
+    public Principal getUser(Principal principal){
+        System.out.println("User name :" + principal);
+        return principal;
+    }
 
     @PostMapping(value = "/signup")
     public ResponseEntity<MessageResponseDto> registerUser(@RequestBody UserRegistrationDto registrationDto) {

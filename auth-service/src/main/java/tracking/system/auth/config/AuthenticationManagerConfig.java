@@ -24,6 +24,5 @@ public class AuthenticationManagerConfig extends GlobalAuthenticationConfigurerA
     @Override
     public void init(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsIService).passwordEncoder(passwordEncoder());
-
     }
 }
