@@ -5,13 +5,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import task.system.tracker.domain.Workload;
-import task.system.tracker.dto.CreateWorkloadRq;
-import task.system.tracker.dto.WorkloadDto;
+import org.springframework.web.bind.annotation.*;
+import task.system.tracker.dto.workload.CreateWorkloadRq;
+import task.system.tracker.dto.workload.UpdateWorkloadRq;
+import task.system.tracker.dto.workload.WorkloadDto;
 import task.system.tracker.service.WorkloadService;
 
 @RestController
@@ -24,7 +21,12 @@ public class RestWorkloadController {
 
     @PostMapping("/create")
     public ResponseEntity<WorkloadDto> createWorkload(@Validated @RequestBody CreateWorkloadRq createWorkloadRq) {
-        return new ResponseEntity<>(new WorkloadDto(workloadService.save(createWorkloadRq)), HttpStatus.OK);
+        return new ResponseEntity<>(new WorkloadDto(workloadService.save(createWorkloadRq)), HttpStatus.CREATED);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<WorkloadDto> updateWorkload(@Validated @RequestBody UpdateWorkloadRq updateWorkloadRq) {
+        return new ResponseEntity<>(new WorkloadDto(workloadService.update(updateWorkloadRq)), HttpStatus.OK);
     }
 
 

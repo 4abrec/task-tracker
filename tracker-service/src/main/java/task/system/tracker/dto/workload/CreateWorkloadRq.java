@@ -1,4 +1,4 @@
-package task.system.tracker.dto;
+package task.system.tracker.dto.workload;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -29,6 +29,7 @@ public class CreateWorkloadRq {
     private String authorId;
 
     public Workload toEntity() {
+
         return new Workload(authorId, name, EActivity.valueOf(activity));
     }
 }

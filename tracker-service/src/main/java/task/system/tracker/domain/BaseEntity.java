@@ -20,14 +20,14 @@ public abstract class BaseEntity implements Serializable {
     @Column(name = "id", length = 36)
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
-    private String id;
+    protected String id;
 
     @Column(name = "author_id", length = 36, nullable = false)
-    private String author;
+    protected String author;
 
     @Column(name = "created_at", nullable = false)
-    private LocalDateTime createdAt;
+    protected LocalDateTime createdAt = LocalDateTime.now();
 
     @Column(name = "updated_at", nullable = false)
-    private LocalDateTime updatedAt;
+    protected LocalDateTime updatedAt = LocalDateTime.now();
 }

@@ -1,8 +1,7 @@
-package task.system.tracker.dto;
+package task.system.tracker.dto.workload;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import task.system.tracker.domain.Bug;
 import task.system.tracker.domain.EActivity;
 import task.system.tracker.domain.Workload;
 

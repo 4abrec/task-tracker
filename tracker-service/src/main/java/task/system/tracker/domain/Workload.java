@@ -27,7 +27,7 @@ public class Workload extends BaseEntity implements Serializable {
     private Set<Project> projects;
 
     public Workload(String author, String name, EActivity activity) {
-        setAuthor(author);
+        this.author = author;
         this.name = name;
         this.activity = activity;
     }
