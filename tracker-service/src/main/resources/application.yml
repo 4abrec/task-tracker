@@ -32,3 +32,8 @@ security:
   oauth2:
     resource:
       user-info-uri: http://localhost:8081/user
+
+task-tracker-config:
+  get-page-config:
+    max-size: 40
+    default-size: 20

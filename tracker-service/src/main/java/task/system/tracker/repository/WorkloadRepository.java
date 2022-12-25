@@ -6,4 +6,6 @@ import task.system.tracker.domain.Workload;
 
 @Repository
 public interface WorkloadRepository extends JpaRepository<Workload, String> {
+
+
 }

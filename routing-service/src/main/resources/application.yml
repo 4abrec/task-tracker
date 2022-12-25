@@ -14,11 +14,11 @@ server:
 zuul:
   routes:
     auth-service:
-      path: /auth-api/**
+      path: /auth/**
       serviceId: auth-service
       sensitiveHeaders:
     task-service:
-      path: /task-api/**
+      path: /task/**
       serviceId: task-service
       sensitiveHeaders:
   ignoredServices: "*"

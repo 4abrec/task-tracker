@@ -2,6 +2,7 @@ package task.system.tracker.domain;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,6 +12,7 @@ import java.util.Set;
 @Table(name = "project")
 @Data
 @EqualsAndHashCode(exclude = {"workload", "epics"}, callSuper = true)
+@NoArgsConstructor
 public class Project extends BaseEntity implements Serializable {
 
     @Column(name = "name", nullable = false, length = 128)
@@ -29,4 +31,19 @@ public class Project extends BaseEntity implements Serializable {
 
     @OneToMany(mappedBy = "project")
     private Set<Epic> epics;
+
+    public Project(String author, String name, String description, EActivity activity) {
+        this.author = author;
+        this.name = name;
+        this.description = description;
+        this.activity = activity;
+    }
+
+    public Project(String id, String author, String name, String description, EActivity activity) {
+        this.id = id;
+        this.author = author;
+        this.name = name;
+        this.description = description;
+        this.activity = activity;
+    }
 }
