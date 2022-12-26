@@ -2,6 +2,7 @@ package task.system.tracker.exception.handler;
 
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -26,6 +27,12 @@ public class ApiExceptionHandler {
 
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<ErrorDto> handleIllegalArgumentException(IllegalArgumentException e, HttpServletRequest request) {
+        log.error(String.valueOf(e));
+        return new ResponseEntity<>(new ErrorDto(HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.name(), e.getMessage(), request.getRequestURI()), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(EmptyResultDataAccessException.class)
+    public ResponseEntity<ErrorDto> handleEmptyResultDataAccessException(EmptyResultDataAccessException e, HttpServletRequest request) {
         log.error(e.getMessage());
         return new ResponseEntity<>(new ErrorDto(HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.name(), e.getMessage(), request.getRequestURI()), HttpStatus.BAD_REQUEST);
     }

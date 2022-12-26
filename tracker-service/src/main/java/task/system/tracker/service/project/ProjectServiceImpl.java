@@ -1,6 +1,8 @@
 package task.system.tracker.service.project;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import task.system.tracker.domain.Project;
 import task.system.tracker.domain.Workload;
@@ -38,5 +40,16 @@ public class ProjectServiceImpl implements ProjectService{
         entityProjectUpd.setCreatedAt(entityProjectFromDb.getCreatedAt());
         entityProjectUpd.setWorkload(entityProjectFromDb.getWorkload());
         return projectRepository.save(entityProjectUpd);
+    }
+
+    @Override
+    public Page<Project> getAll(Integer pageSize, Integer pageNumber) {
+        return projectRepository.findAll(Pageable.ofSize(pageSize)
+                .withPage(pageNumber));
+    }
+
+    @Override
+    public void deleteById(String id) {
+        projectRepository.deleteById(id);
     }
 }

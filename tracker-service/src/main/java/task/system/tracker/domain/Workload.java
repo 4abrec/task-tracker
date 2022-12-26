@@ -23,7 +23,7 @@ public class Workload extends BaseEntity implements Serializable {
     @Column(name = "activity", length = 18, nullable = false)
     private EActivity activity;
 
-    @OneToMany(mappedBy = "workload")
+    @OneToMany(mappedBy = "workload", cascade = CascadeType.REMOVE)
     private Set<Project> projects;
 
     public Workload(String author, String name, EActivity activity) {

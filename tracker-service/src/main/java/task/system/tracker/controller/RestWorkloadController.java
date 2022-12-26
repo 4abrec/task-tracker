@@ -18,7 +18,7 @@ import task.system.tracker.util.PageSizeValidator;
 
 @RestController
 @RequestMapping(
-        value = "/workload",
+        value = "/api/workload",
         produces = {MediaType.APPLICATION_JSON_VALUE},
         consumes = {MediaType.APPLICATION_JSON_VALUE})
 @Api(tags = "Workload Controller")
@@ -46,9 +46,10 @@ public class RestWorkloadController {
         return ResponseEntity.ok(new WorkloadDto(workloadService.getById(id)));
     }
 
+
     @GetMapping("/getPage")
     @ApiOperation(value = "Get page with workloads")
-    public ResponseEntity<PageDto<WorkloadDto>> getPage (
+    public ResponseEntity<PageDto<WorkloadDto>> getPage(
             @RequestParam(value = "pageNumber", required = false, defaultValue = "0") Integer pageNumber,
             @RequestParam(value = "pageSize", required = false, defaultValue = "10") Integer pageSize) {
         Integer correctPageSize = pageSizeValidator.getPageSize(pageSize);
@@ -58,11 +59,10 @@ public class RestWorkloadController {
     }
 
     @DeleteMapping()
+    @ApiOperation(value = "Delete workload by id")
     public void deleteWorkload(@RequestParam(value = "id") String id) {
         workloadService.deleteById(id);
     }
-
-
 
 
 }

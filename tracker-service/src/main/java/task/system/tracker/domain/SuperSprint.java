@@ -2,11 +2,9 @@ package task.system.tracker.domain;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -15,6 +13,7 @@ import java.util.Set;
 @Table(name = "super_sprint")
 @Data
 @EqualsAndHashCode(exclude = {"sprints", "epics"}, callSuper = true)
+@NoArgsConstructor
 public class SuperSprint extends BaseEntity implements Serializable {
 
     @Column(name = "name", nullable = false, length = 128)
@@ -23,12 +22,28 @@ public class SuperSprint extends BaseEntity implements Serializable {
     @Column(name = "start_at", nullable = false)
     private LocalDateTime startAt;
 
-    @Column(name = "updated_at", nullable = false)
-    private LocalDateTime updatedAt;
+    @Column(name = "end_at", nullable = false)
+    private LocalDateTime endAt;
 
-    @OneToMany(mappedBy = "superSprint")
+    @OneToMany(mappedBy = "superSprint", cascade = CascadeType.REMOVE)
     private Set<Sprint> sprints;
 
-    @OneToMany(mappedBy = "superSprint")
+    @OneToMany(mappedBy = "superSprint", cascade = CascadeType.REMOVE)
     private Set<Epic> epics;
+
+    public SuperSprint(String authorId, String name, LocalDateTime startAt, LocalDateTime endAt) {
+        this.author = authorId;
+        this.name = name;
+        this.startAt = startAt;
+        this.endAt = endAt;
+    }
+
+    public SuperSprint(String id, String authorId, String name, LocalDateTime startAt, LocalDateTime endAt) {
+        this.id = id;
+        this.author = authorId;
+        this.name = name;
+        this.startAt = startAt;
+        this.endAt = endAt;
+    }
+
 }

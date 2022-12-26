@@ -18,7 +18,7 @@ zuul:
       serviceId: auth-service
       sensitiveHeaders:
     task-service:
-      path: /task/**
+      path: /task-tracker/**
       serviceId: task-service
       sensitiveHeaders:
   ignoredServices: "*"

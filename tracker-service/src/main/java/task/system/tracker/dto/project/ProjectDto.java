@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import task.system.tracker.domain.EActivity;
 import task.system.tracker.domain.Project;
-import task.system.tracker.domain.Workload;
 import task.system.tracker.dto.workload.WorkloadDto;
 
 import java.time.LocalDateTime;
@@ -35,9 +34,9 @@ public class ProjectDto {
         this.workload = new WorkloadDto(project.getWorkload());
     }
 
-    public static List<WorkloadDto> toDtoList(List<Workload> workloadList) {
-        return workloadList.stream()
-                .map(WorkloadDto::new)
+    public static List<ProjectDto> toDtoList(List<Project> projectList) {
+        return projectList.stream()
+                .map(ProjectDto::new)
                 .collect(Collectors.toList());
     }
 }
