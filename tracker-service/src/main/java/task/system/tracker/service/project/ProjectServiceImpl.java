@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import task.system.tracker.domain.Project;
 import task.system.tracker.domain.Workload;
 import task.system.tracker.dto.project.CreateProjectRq;
-import task.system.tracker.dto.project.ProjectDto;
 import task.system.tracker.dto.project.UpdateProjectRq;
 import task.system.tracker.exception.ResourceNotFoundException;
 import task.system.tracker.repository.ProjectRepository;

@@ -2,9 +2,7 @@ package task.system.tracker.dto.project;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Type;
 import task.system.tracker.domain.EActivity;
 import task.system.tracker.domain.Project;
 
