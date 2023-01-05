@@ -2,6 +2,7 @@ package task.system.tracker.domain;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,6 +12,7 @@ import java.util.Set;
 @Table(name = "history")
 @Data
 @EqualsAndHashCode(exclude = {"epic", "sprint", "bugs", "tasks"}, callSuper = true)
+@NoArgsConstructor
 public class History extends BaseEntity implements Serializable {
 
     @Column(name = "name", nullable = false)
@@ -35,9 +37,26 @@ public class History extends BaseEntity implements Serializable {
     @JoinColumn(name = "sprint_id")
     private Sprint sprint;
 
-    @OneToMany(mappedBy = "history")
+    @OneToMany(mappedBy = "history", cascade = CascadeType.REMOVE)
     private Set<Bug> bugs;
 
-    @OneToMany(mappedBy = "history")
+    @OneToMany(mappedBy = "history", cascade = CascadeType.REMOVE)
     private Set<Task> tasks;
+
+    public History(String author, String name, String description, ETaskStatus status, EPriority priority) {
+        this.author = author;
+        this.name = name;
+        this.description = description;
+        this.status = status;
+        this.priority = priority;
+    }
+
+    public History(String id, String author, String name, String description, ETaskStatus status, EPriority priority) {
+        this.id = id;
+        this.author = author;
+        this.name = name;
+        this.description = description;
+        this.status = status;
+        this.priority = priority;
+    }
 }

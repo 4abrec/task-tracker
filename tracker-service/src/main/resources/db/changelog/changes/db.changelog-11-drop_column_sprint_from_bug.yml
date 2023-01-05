@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: "11"
+      author: 4abrec
+      changes:
+        - dropColumn:
+            columns:
+              - column:
+                  name: sprint_id
+            tableName: bug

@@ -30,7 +30,7 @@ public class RestProjectController {
 
     @PostMapping("/save")
     @ApiOperation(value = "Save project", response = ProjectDto.class)
-    public ResponseEntity<ProjectDto> createWorkload(@Validated @RequestBody CreateProjectRq createProjectRq) {
+    public ResponseEntity<ProjectDto> createProject(@Validated @RequestBody CreateProjectRq createProjectRq) {
         return ResponseEntity.ok(new ProjectDto((projectService.save(createProjectRq))));
     }
 

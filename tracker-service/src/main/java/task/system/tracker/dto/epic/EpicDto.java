@@ -40,7 +40,7 @@ public class EpicDto {
         this.updatedAt = epic.getUpdatedAt();
     }
 
-    public static List<EpicDto> toDroList(List<Epic> epics) {
+    public static List<EpicDto> toDtoList(List<Epic> epics) {
         return epics.stream()
                 .map(EpicDto::new).collect(Collectors.toList());
     }

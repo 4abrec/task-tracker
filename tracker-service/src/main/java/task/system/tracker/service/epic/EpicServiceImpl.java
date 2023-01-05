@@ -30,7 +30,6 @@ public class EpicServiceImpl implements EpicService {
         epic.setProject(project);
         epic.setSuperSprint(superSprint);
         return epicRepository.save(epic);
-
     }
 
     @Override
@@ -42,8 +41,8 @@ public class EpicServiceImpl implements EpicService {
     public Epic update(UpdateEpicRq updateEpicRq) {
         Epic entityEpicFromDb = getById(updateEpicRq.getId());
         Epic entityEpicForUpd = updateEpicRq.toEntity();
-        entityEpicForUpd.setSuperSprint(entityEpicFromDb.getSuperSprint());
-        entityEpicForUpd.setProject(entityEpicFromDb.getProject());
+        entityEpicForUpd.setSuperSprint(superSprintService.getById(updateEpicRq.getSuperSprintId()));
+        entityEpicForUpd.setProject(projectService.getById(updateEpicRq.getProjectId()));
         entityEpicForUpd.setCreatedAt(entityEpicFromDb.getCreatedAt());
         return epicRepository.save(entityEpicForUpd);
     }

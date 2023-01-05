@@ -12,7 +12,7 @@ import java.util.Set;
 @Entity
 @Data
 @Table(name = "sprint")
-@EqualsAndHashCode(exclude = {"superSprint", "histories", "bugs"}, callSuper = true)
+@EqualsAndHashCode(exclude = {"superSprint", "histories"}, callSuper = true)
 @NoArgsConstructor
 public class Sprint extends BaseEntity implements Serializable {
 
@@ -31,9 +31,6 @@ public class Sprint extends BaseEntity implements Serializable {
 
     @OneToMany(mappedBy = "sprint", cascade = CascadeType.REMOVE)
     private Set<History> histories;
-
-    @OneToMany(mappedBy = "sprint", cascade = CascadeType.REMOVE)
-    private Set<Bug> bugs;
 
 
     public Sprint(String author, String name, LocalDateTime startAt, LocalDateTime endAt) {

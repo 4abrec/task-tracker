@@ -32,7 +32,7 @@ public class SprintServiceImpl implements SprintService{
         Sprint entitySprintFromDb = getById(updateSuperSprintRq.getId());
         Sprint entitySprintForUpd = updateSuperSprintRq.toEntity();
         entitySprintForUpd.setCreatedAt(entitySprintFromDb.getCreatedAt());
-        entitySprintForUpd.setSuperSprint(entitySprintFromDb.getSuperSprint());
+        entitySprintForUpd.setSuperSprint(superSprintService.getById(updateSuperSprintRq.getSuperSprintId()));
         return sprintRepository.save(entitySprintForUpd);
     }
 

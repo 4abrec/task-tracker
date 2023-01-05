@@ -37,7 +37,7 @@ public class ProjectServiceImpl implements ProjectService{
         Project entityProjectFromDb = getById(updateProjectRq.getId());
         Project entityProjectUpd = updateProjectRq.toEntity();
         entityProjectUpd.setCreatedAt(entityProjectFromDb.getCreatedAt());
-        entityProjectUpd.setWorkload(entityProjectFromDb.getWorkload());
+        entityProjectUpd.setWorkload(workloadService.getById(updateProjectRq.getWorkloadId()));
         return projectRepository.save(entityProjectUpd);
     }
 

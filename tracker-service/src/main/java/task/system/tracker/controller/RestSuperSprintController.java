@@ -17,10 +17,7 @@ import task.system.tracker.service.supersprint.SuperSprintService;
 import task.system.tracker.util.PageSizeValidator;
 
 @RestController
-@RequestMapping(
-        value = "/api/superSprint",
-        produces = {MediaType.APPLICATION_JSON_VALUE},
-        consumes = {MediaType.APPLICATION_JSON_VALUE})
+@RequestMapping("/api/superSprint")
 @Api(tags = "SuperSprintController Controller")
 @RequiredArgsConstructor
 public class RestSuperSprintController {
