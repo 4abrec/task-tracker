@@ -55,7 +55,7 @@ public class RestBugController {
 
     @DeleteMapping
     @ApiOperation(value = "Delete bug by id")
-    public void deleteEpicById(@RequestParam(value = "id") String id) {
+    public void deleteBugById(@RequestParam(value = "id") String id) {
         bugService.deleteById(id);
     }
 }

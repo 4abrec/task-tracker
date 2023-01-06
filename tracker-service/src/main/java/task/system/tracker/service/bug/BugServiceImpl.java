@@ -30,16 +30,14 @@ public class BugServiceImpl implements BugService {
 
     @Override
     public Bug getById(String id) {
-        return bugRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(String.format("Bug with id %s not found", id)));
+        return bugRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(String.format("Bug with id %s not found", id)));
     }
 
     @Override
     public Bug update(UpdateBugRq updateBugRq) {
         Bug entityBugFromDb = getById(updateBugRq.getId());
         Bug entityBugForUpd = updateBugRq.toEntity();
-        History history = historyService.getById(updateBugRq.getHistoryId());
-        entityBugForUpd.setHistory(history);
+        entityBugForUpd.setHistory(historyService.getById(updateBugRq.getHistoryId()));
         entityBugForUpd.setCreatedAt(entityBugFromDb.getCreatedAt());
         return bugRepository.save(entityBugForUpd);
     }

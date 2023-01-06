@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: "1"
+      author: 4abrec
+      changes:
+        - createTable:
+            tableName: workload
+            columns:
+              - column:
+                  name: id
+                  type: VARCHAR(36)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(128)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: activity
+                  type: VARCHAR(18)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: author_id
+                  type: VARCHAR(36)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+

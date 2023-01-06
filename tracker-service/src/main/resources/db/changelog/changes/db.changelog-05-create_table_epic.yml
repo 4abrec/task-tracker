@@ -1,0 +1,62 @@
+databaseChangeLog:
+  - changeSet:
+      id: "5"
+      author: 4abrec
+      changes:
+        - createTable:
+            tableName: epic
+            columns:
+              - column:
+                  name: id
+                  type: VARCHAR(36)
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: VARCHAR(128)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: VARCHAR(128)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: VARCHAR(18)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: priority
+                  type: VARCHAR(18)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: project_id
+                  type: VARCHAR(36)
+                  constraints:
+                    foreignKeyName: fk_project
+                    references: project(id)
+                    nullable: false
+              - column:
+                  name: super_sprint_id
+                  type: VARCHAR(36)
+                  constraints:
+                    foreignKeyName: fk_super_sprint
+                    references: super_sprint(id)
+                    nullable: true
+              - column:
+                  name: author_id
+                  type: VARCHAR(36)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  constraints:
+                    nullable: false

@@ -21,7 +21,7 @@ public class ProjectDto {
     private LocalDateTime updatedAt;
     private String name;
     private EActivity activity;
-    private WorkloadDto workload;
+    private WorkloadDto workloadDto;
 
     public ProjectDto(Project project) {
         this.id = project.getId();
@@ -31,7 +31,7 @@ public class ProjectDto {
         this.updatedAt = project.getUpdatedAt();
         this.name = project.getName();
         this.activity = project.getActivity();
-        this.workload = new WorkloadDto(project.getWorkload());
+        this.workloadDto = new WorkloadDto(project.getWorkload());
     }
 
     public static List<ProjectDto> toDtoList(List<Project> projectList) {
