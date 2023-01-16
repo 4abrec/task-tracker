@@ -46,4 +46,13 @@ public class Project extends BaseEntity implements Serializable {
         this.description = description;
         this.activity = activity;
     }
+
+    @Override
+    public String toString() {
+        return "Project{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", activity=" + activity +
+                '}';
+    }
 }

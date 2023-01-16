@@ -12,6 +12,9 @@ import task.system.tracker.exception.ResourceNotFoundException;
 import task.system.tracker.repository.TaskRepository;
 import task.system.tracker.service.history.HistoryService;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class TaskServiceImpl implements TaskService {
@@ -49,5 +52,10 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public void deleteById(String id) {
         taskRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Task> findByProjectIdAndCreatedAt(String projectId, LocalDateTime lastAt) {
+        return taskRepository.findByProjectIdAndCreatedAt(projectId, lastAt);
     }
 }

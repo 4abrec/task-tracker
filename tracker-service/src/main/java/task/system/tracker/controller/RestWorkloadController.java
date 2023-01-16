@@ -4,7 +4,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -18,9 +17,7 @@ import task.system.tracker.util.PageSizeValidator;
 
 @RestController
 @RequestMapping(
-        value = "/api/workload",
-        produces = {MediaType.APPLICATION_JSON_VALUE},
-        consumes = {MediaType.APPLICATION_JSON_VALUE})
+        value = "/api/workload")
 @Api(tags = "Workload Controller")
 @RequiredArgsConstructor
 public class RestWorkloadController {
@@ -63,6 +60,5 @@ public class RestWorkloadController {
     public void deleteWorkload(@RequestParam(value = "id") String id) {
         workloadService.deleteById(id);
     }
-
 
 }

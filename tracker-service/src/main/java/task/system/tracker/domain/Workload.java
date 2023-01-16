@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -23,7 +24,7 @@ public class Workload extends BaseEntity implements Serializable {
     @Column(name = "activity", length = 18, nullable = false)
     private EActivity activity;
 
-    @OneToMany(mappedBy = "workload", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "workload", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Project> projects;
 
     public Workload(String author, String name, EActivity activity) {
@@ -39,4 +40,12 @@ public class Workload extends BaseEntity implements Serializable {
         this.activity = activity;
     }
 
+    @Override
+    public String toString() {
+        return "Workload{" +
+                "name='" + name + '\'' +
+                ", activity=" + activity +
+                ", projects=" + projects +
+                '}';
+    }
 }

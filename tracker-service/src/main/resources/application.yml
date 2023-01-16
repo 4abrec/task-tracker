@@ -14,6 +14,12 @@ spring:
     change-log: "classpath:db/changelog/db.changelog-master.yml"
   application:
     name: task-service
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: 4abrec
+    password: root
+    virtual-host: cpp
 server:
   port: 8082
 eureka:
@@ -37,3 +43,9 @@ task-tracker-config:
   get-page-config:
     max-size: 40
     default-size: 20
+cron:
+  scheduler: 0 * * * * *
+rabbitmq:
+  queue: SUBSCRIPTION
+  exchange: subscriptionExchange
+  routingKey: subscriptionRoutingKey

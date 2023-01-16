@@ -1,4 +1,8 @@
 version: "3.9"
+networks:
+  kafka-net:
+    name: kafka-net
+    driver: bridge
 services:
   postgres:
     image: postgres:13.3
@@ -9,3 +13,12 @@ services:
       - ./postgres-data:/var/lib/postgresql/data
     ports:
       - "5435:5432"
+  localRabbitMQ:
+    image: rabbitmq:3-management-alpine
+    environment:
+      RABBITMQ_DEFAULT_USER: 4abrec
+      RABBITMQ_DEFAULT_PASS: root
+      RABBITMQ_DEFAULT_VHOST: cpp
+    ports:
+      - "5672:5672"
+      - "15672:15672"
